@@ -1,7 +1,6 @@
 class Main
   def start_console
     puts 'Welcome to Catalog App'
-
     loop_method
   end
 
@@ -31,7 +30,7 @@ class Main
 
       puts 'Insert any key to exit'
       input = gets.chomp
-      if input >= 13
+      if input >= '13'
         puts 'Thank you for using this app'
         break
       end
