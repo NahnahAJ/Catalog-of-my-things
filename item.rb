@@ -1,21 +1,35 @@
 class Item
 
-  attr_accessor :id , :genre , :author , :source , :label , :publish_date, :archived
+  attr_accessor :genre , :author , :source , :label , :publish_date
 
-  def intitalize (id,genre,author,source,label,publish_date,archived)
-    @id = id
-    @genre = genre
-    @author = author
-    @source = source
-    @label = label
+  def intitalize (id,publish_date,archived)
+    @id = Random.rand(1..10000)
     @publish_date = publish_date
     @archived = archived
+    @genre = []
+    @author = []
+    @source = []
+    @label = []
+  end
+
+  def add_genre (genre)
+    @genre << genre
+  end
+
+  def add_author(author)
+    @author << author
+  end
+
+  def add_source(source)
+    @source << source
+  end
+
+  def add_label(label)
+    @label<< label
   end
 
   def can_be_archived?()
-    uless publish_date > 10
-      false
-    end
+    Time.now.year - @publish_date > 10
   end
 
   def move_to_archive()
