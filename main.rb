@@ -30,7 +30,7 @@ class Main
       puts 'Insert any key to exit'
       input = gets.chomp.to_i
       if input.positive? && input <= 13
-        options.keys[input]
+        options.values[input]
       else
         puts 'Thank you for using this app'
         break
