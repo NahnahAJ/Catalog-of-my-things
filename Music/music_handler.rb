@@ -26,12 +26,12 @@ module MusicHandler
 
   def list_music_albums
     puts "\nList of albums -:"
-    @albums.each { |album| puts album.name }
+    @albums.each_with_index { |album, i| puts " #{i+1}) #{album.name}" }
   end
 
   def list_genres
     puts "\nList of genres -:"
-    @genres.each { |genre| puts genre.name }
+    @genres.each_with_index { |genre, i| puts " #{i+1}) #{genre.name}" }
   end
 
   def add_music_album
