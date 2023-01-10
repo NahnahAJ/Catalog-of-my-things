@@ -30,7 +30,7 @@ class Main
   def add_music_album
     inputs = music_input
     album = MusicAlbum.new(inputs[0].strip.capitalize,
-                      inputs[3].strip[0].capitalize == 'Y', inputs[2])
+                           inputs[3].strip[0].capitalize == 'Y', inputs[2])
     @albums << album
     genre = nil
     @genres.each do |g|
