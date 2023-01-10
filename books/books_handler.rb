@@ -17,7 +17,7 @@ class BooksHandler
     puts 'There is currently no books in store.' if @books.empty?
     @books.each_with_index do |book, index|
       print ' '
-      print "(#{index + 1}). => Publisher: #{book[:publisher]} | Label: #{book[:label]}"
+      print "(#{index + 1}). ID: #{book[:id]} | Publisher: #{book[:publisher]} | Label: #{book[:label]}"
       puts "\n"
       puts "\tCover state: #{book[:cover_state]} | publish date: #{book[:publish_date]} "
     end
@@ -37,11 +37,15 @@ class BooksHandler
     end
     print 'Enter Publish date(yyyy-mm-dd): '
     date = gets.chomp
-    puts "Date: #{date} | State: #{state_result} | Publisher: #{publisher}"
+    puts "Select which label the book should have"
+    @labels.list_labels
+    index = gets.chomp.to_i
     book = Book.new(publisher, state_result, date)
-    new_book = book.to_json
+    book.label = @labels.labels[index-1]
+    new_book = { publisher: publisher, cover_state: state_result, publish_date: date,
+                 label: book.label[:title]}
     @books << new_book
-    File.write('./books/books.json', JSON[@books])
+    File.write('./books/books.json', JSON.dump(@books))
     puts 'The book added successfully 😊'
   end
 end
