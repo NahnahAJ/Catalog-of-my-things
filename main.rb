@@ -1,10 +1,11 @@
-require_relative "./books/books_handler"
-require_relative "./label/label_handler"
+require_relative './books/books_handler'
+require_relative './label/label_handler'
 class Main
   def initialize
     @label = LabelHandler.new
     @books = BooksHandler.new(@label)
   end
+
   def start_console
     puts 'Welcome to Catalog App'
 
@@ -38,14 +39,14 @@ class Main
       input = gets.chomp.to_i
       if input.positive? && input <= 13
         case input
-          when 1
-            @books.list_books
-          when 6
-            @label.list_labels
-          when 9
-            @books.add_book
-          else
-            options.values[input]
+        when 1
+          @books.list_books
+        when 6
+          @label.list_labels
+        when 9
+          @books.add_book
+        else
+          options.values[input]
         end
         options.values[input]
       else
