@@ -3,14 +3,14 @@ require 'json'
 class BooksHandler
   attr_accessor :books
 
-  def initialize(_labels)
+  def initialize(labels)
     if File.exist?('./books/books.json')
       @file = File.read('./books/books.json')
       @books = JSON.parse(@file, { symbolize_names: true })
     else
       @books = []
     end
-    # @labels = labels
+    @labels = labels
   end
 
   def list_books
