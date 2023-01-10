@@ -1,4 +1,4 @@
-require_relative 'music_handler'
+require_relative './Music/music_handler'
 
 class Main
   include MusicHandler
