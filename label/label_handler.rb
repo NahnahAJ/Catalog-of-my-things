@@ -2,6 +2,8 @@ require 'json'
 require_relative './label'
 class LabelHandler
 
+  attr_accessor :labels
+
   def initialize
     if File.exist?("./label/label.json")
       #Reads from the JSON file and parses it into an object.
