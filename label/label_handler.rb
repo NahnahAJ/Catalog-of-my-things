@@ -1,4 +1,5 @@
 require 'json'
+require_relative './label'
 class LabelHandler
 
   def initialize
@@ -7,7 +8,7 @@ class LabelHandler
       @labels = JSON.parse(File.read("./label/label.json"),{symbolize_names:true})
     else
       #Creates a new label.json file and writes {} as the JSON format.
-      File.open("./label/label.json","w+"){|f| f.write("{}") }
+      File.open("./label/label.json","w+"){|f| f.write("[]") }
       @labels = JSON.parse(File.read("./label/label.json"),{symbolize_names:true})
     end
   end
@@ -17,7 +18,18 @@ class LabelHandler
       puts "#{index+1}) Title: #{label[:title]} | Color: #{label[:color]}"
     end
   end
+
+  def add_labels
+    puts "Enter label title."
+    title = gets.chomp
+    puts "Enter label color."
+    color = gets.chomp
+    label = Label.new(title,color)
+    new_label = label.to_json
+    @labels << new_label
+    File.write("./label/label.json",JSON[@labels])
+    puts "Label is added successfully."
+  end
 end
 
-# label = LabelHandler.new
-# label.list_labels
+
