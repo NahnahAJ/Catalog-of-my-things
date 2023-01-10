@@ -10,6 +10,7 @@ class Main
     @genres = []
     @albums = []
 
+    read_music
     start_console
   end
 
@@ -52,6 +53,7 @@ class Main
         end
       else
         puts "\nThank you for using this app\n\n"
+        save_music
         break
       end
     end
