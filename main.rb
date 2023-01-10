@@ -1,8 +1,12 @@
 require_relative './Music/music_handler'
+require_relative './books/books_handler'
+require_relative './label/label_handler'
 
 class Main
   include MusicHandler
   def initialize
+    @label = LabelHandler.new
+    @books = BooksHandler.new(@label)
     @genres = []
     @albums = []
 
@@ -33,11 +37,19 @@ class Main
       options.each_with_index do |(option, _), index|
         puts " #{index + 1}) #{option}"
       end
-
       puts "\n--Insert any key to exit"
       input = gets.chomp.to_i
       if input.positive? && input <= 9
-        send(options.values[input - 1])
+        case input
+        when 1
+          @books.list_books
+        when 5
+          @label.list_labels
+        when 7
+          @books.add_book
+        else
+          send(options.values[input - 1])
+        end
       else
         puts "\nThank you for using this app\n\n"
         break
