@@ -6,10 +6,6 @@ class Item
     @id = Random.rand(1..10_000)
     @publish_date = Date.parse(publish_date)
     @archived = archived
-    @genre = nil
-    @author = nil
-    @source = nil
-    @label = nil
   end
 
   def add_genre(genre)
