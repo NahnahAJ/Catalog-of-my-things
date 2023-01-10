@@ -43,7 +43,7 @@ class Main
         when 7
           @books.add_book
         else
-          send(options.values[input-1])
+          send(options.values[input - 1])
         end
       else
         puts 'Thank you for using this app'
