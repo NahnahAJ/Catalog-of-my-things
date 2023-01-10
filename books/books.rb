@@ -16,6 +16,6 @@ class Book < Item
     { 'id' => @id,
       'publisher' => @publisher,
       'cover_state' => @cover_state,
-      'publish_date' => @publish_date}
+      'publish_date' => @publish_date }
   end
 end

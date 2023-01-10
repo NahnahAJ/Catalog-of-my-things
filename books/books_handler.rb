@@ -37,13 +37,13 @@ class BooksHandler
     end
     print 'Enter Publish date(yyyy-mm-dd): '
     date = gets.chomp
-    puts "Select which label the book should have"
+    puts 'Select which label the book should have'
     @labels.list_labels
     index = gets.chomp.to_i
     book = Book.new(publisher, state_result, date)
-    book.label = @labels.labels[index-1]
+    book.label = @labels.labels[index - 1]
     new_book = { publisher: publisher, cover_state: state_result, publish_date: date,
-                 label: book.label[:title]}
+                 label: book.label[:title] }
     @books << new_book
     File.write('./books/books.json', JSON.dump(@books))
     puts 'The book added successfully 😊'
