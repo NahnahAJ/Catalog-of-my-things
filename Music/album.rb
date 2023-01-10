@@ -4,7 +4,7 @@ class MusicAlbum < Item
   attr_accessor :on_spotify, :name
 
   def initialize(name, on_spot, publish_date)
-    super(publish_date)
+    super(publish_date, false)
     @name = name
     @on_spotify = on_spot
   end
@@ -13,5 +13,12 @@ class MusicAlbum < Item
     super().can_be_archived? && @on_spotify
   end
 
-  def to_json(*_args); end
+  def to_hash
+    {
+      name: @name,
+      on_spotify: @on_spotify ? 'y' : 'n',
+      genre: @genre.name,
+      publish_date: @publish_date
+    }
+  end
 end
