@@ -1,13 +1,20 @@
+require_relative './Music/music_handler'
 require_relative './books/books_handler'
 require_relative './label/label_handler'
+
 class Main
+  include MusicHandler
   def initialize
     @label = LabelHandler.new
     @books = BooksHandler.new(@label)
+    @genres = []
+    @albums = []
+
+    start_console
   end
 
   def start_console
-    puts 'Welcome to Catalog App'
+    puts "\nWelcome to Catalog App\n\n"
 
     options = {
       'List all books' => :list_books,
@@ -25,14 +32,12 @@ class Main
   end
 
   def loop_method(options)
-    puts 'Please choose an option by selecting a number'
     loop do
+      puts "\nPlease choose an option by selecting a number"
       options.each_with_index do |(option, _), index|
-        puts "#{index + 1}) #{option}"
+        puts " #{index + 1}) #{option}"
       end
-
-      puts 'Insert any key to exit'
-      puts ''
+      puts "\n--Insert any key to exit"
       input = gets.chomp.to_i
       if input.positive? && input <= 9
         case input
@@ -46,12 +51,11 @@ class Main
           send(options.values[input - 1])
         end
       else
-        puts 'Thank you for using this app'
+        puts "\nThank you for using this app\n\n"
         break
       end
     end
   end
 end
 
-main = Main.new
-main.start_console
+Main.new
