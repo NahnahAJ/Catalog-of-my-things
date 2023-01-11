@@ -10,7 +10,7 @@ class MusicAlbum < Item
   end
 
   def can_be_archived?
-    super().can_be_archived? && @on_spotify
+    super && @on_spotify
   end
 
   def to_hash
@@ -18,7 +18,7 @@ class MusicAlbum < Item
       name: @name,
       on_spotify: @on_spotify ? 'y' : 'n',
       genre: @genre.name,
-      publish_date: @publish_date
+      publish_date: @publish_date.to_s
     }
   end
 end
