@@ -42,7 +42,7 @@ class BooksHandler
     index = gets.chomp.to_i
     book = Book.new(publisher, state_result, date)
     book.label = @labels.labels[index - 1]
-    new_book = { publisher: publisher, cover_state: state_result, publish_date: date,
+    new_book = { id: book.id, publisher: publisher, cover_state: state_result, publish_date: date,
                  label: book.label[:title] }
     @books << new_book
     File.write('./books/books.json', JSON.dump(@books))
