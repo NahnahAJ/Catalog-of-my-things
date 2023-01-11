@@ -1,5 +1,5 @@
 require_relative '../Music/genre'
-require_relative'../Music/album'
+require_relative '../Music/album'
 
 describe MusicAlbum do
   before(:each) do
