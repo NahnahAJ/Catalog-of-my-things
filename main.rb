@@ -20,7 +20,7 @@ class Main
 
   def start_console
     puts "\nWelcome to Catalog App\n\n"
-    
+
     options = {
       'List all books' => :list_books,
       'List all music albums' => :list_music_albums,
@@ -44,17 +44,17 @@ class Main
       end
       puts "\n--Insert any key to exit"
       input = gets.chomp.to_i
-      if input.positive? && input <= 9
-        case input
-        when 1
-          @books.list_books
-        when 5
-          @label.list_labels
-        when 7
-          @books.add_book
-        else
-          send(options.values[input - 1])
+      next unless input.positive? && input <= 9
+
+      case input
+      when 1
+        @books.list_books
+      when 5
+        @label.list_labels
+      when 7
+        @books.add_book
       else
+        send(options.values[input - 1])
         puts "\nThank you for using this app\n\n"
         save_music
         break
