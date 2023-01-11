@@ -18,18 +18,24 @@ module OptionsHandler
   end
 
   def list_authors
-    @authors.each do |author|
-      puts "Author #{author.first_name} #{author.last_name} is now on the list"
+    if @authors.empty?
+      puts 'There are no authors on the list'
+    else
+
+      @authors.each do |author|
+        puts "Author #{author.first_name} #{author.last_name} is now on the list"
+      end
     end
   end
 
   def add_game
-    puts 'Is this game in multiplayer mode? true or false'
+    puts 'Please enter the multiplayer status of the game'
     multiplayer = gets.chomp
-    puts 'When was this game last played'
+    puts 'Please enter the last played date of the game'
     last_played_at = gets.chomp
+
     new_game = Game.new(multiplayer, last_played_at)
-    puts 'Game is now online'
     @games << new_game
+    puts "Game #{new_game} was added to the list"
   end
 end
