@@ -29,13 +29,13 @@ module OptionsHandler
   end
 
   def add_game
-    puts 'Please enter the multiplayer status of the game'
+    puts 'Please enter the multiplayer status of the game (true/false)'
     multiplayer = gets.chomp
-    puts 'Please enter the last played date of the game'
+    puts 'Please enter the last played date of the game (YYYY-MM-DD)'
     last_played_at = gets.chomp
-    puts 'Please enter the publish date of the game'
+    puts 'Please enter the publish date of the game (YYYY-MM-DD)'
     publish_date = gets.chomp
-    puts 'Please enter the archived status of the game'
+    puts 'Please enter the archived status of the game (true/false)'
     archived = gets.chomp
 
     new_game = Game.new(multiplayer, last_played_at, publish_date, archived)
