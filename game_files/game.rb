@@ -3,9 +3,10 @@ require_relative '../item'
 # All Game class properties visible in the diagram should be defined and set up in the constructor method.
 class Game < Item
   attr_accessor :multiplayer, :last_played_at
+  attr_reader :publish_date, :archived
 
-  def initialize(multiplayer, last_played_at)
-    super()
+  def initialize(multiplayer, last_played_at, publish_date, archived)
+    super(publish_date, archived)
     @last_played_at = last_played_at
     @multiplayer = multiplayer
   end

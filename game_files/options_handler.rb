@@ -33,8 +33,12 @@ module OptionsHandler
     multiplayer = gets.chomp
     puts 'Please enter the last played date of the game'
     last_played_at = gets.chomp
+    puts 'Please enter the publish date of the game'
+    publish_date = gets.chomp
+    puts 'Please enter the archived status of the game'
+    archived = gets.chomp
 
-    new_game = Game.new(multiplayer, last_played_at)
+    new_game = Game.new(multiplayer, last_played_at, publish_date, archived)
     @games << new_game
     puts "Game #{new_game} was added to the list"
   end

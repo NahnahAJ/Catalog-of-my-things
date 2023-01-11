@@ -27,32 +27,17 @@ describe Author do
   end
 
   it 'should be able to add an item' do
-    new_item = Item.new
+    new_item = Item.new('2020-01-01', false)
     @new_author.add_item(new_item)
     expect(@new_author.items).to include(new_item)
   end
 
   it 'should be able to add multiple items' do
-    new_item = Item.new
-    new_item2 = Item.new
+    new_item = Item.new('2020-01-01', false)
+    new_item2 = Item.new('2020-01-01', false)
     @new_author.add_item(new_item)
     @new_author.add_item(new_item2)
     expect(@new_author.items).to include(new_item)
     expect(@new_author.items).to include(new_item2)
   end
-
-  # it "should be able to add an item and have the item know about the author" do
-  #   new_item = Item.new
-  #   @new_author.add_item(new_item)
-  #   expect(new_item.author).to include(@new_author)
-  # end
-
-  # it "should be able to add multiple items and have the items know about the author" do
-  #   new_item = Item.new
-  #   new_item2 = Item.new
-  #   @new_author.add_item(new_item)
-  #   @new_author.add_item(new_item2)
-  #   expect(new_item.authors).to include(@new_author)
-  #   expect(new_item2.authors).to include(@new_author)
-  # end
 end
