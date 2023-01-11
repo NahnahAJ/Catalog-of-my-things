@@ -2,7 +2,7 @@ require_relative 'spec_helper'
 
 describe Author do
   before :each do
-    @new_author = Author.new(1, 'John', 'Doe')
+    @new_author = Author.new('John', 'Doe')
   end
 
   it 'should be an instance of Author' do

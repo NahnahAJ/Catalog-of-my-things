@@ -2,10 +2,12 @@ require_relative './Music/music_handler'
 require_relative './books/books_handler'
 require_relative './label/label_handler'
 require_relative './game_files/options_handler'
+require_relative './game_files/preserve'
 
 class Main
   include MusicHandler
   include OptionsHandler
+  include GamesHandler
   def initialize
     @label = LabelHandler.new
     @books = BooksHandler.new(@label)
@@ -15,6 +17,7 @@ class Main
     @authors = []
 
     read_music
+    load_data
     start_console
   end
 
@@ -44,19 +47,21 @@ class Main
       end
       puts "\n--Insert any key to exit"
       input = gets.chomp.to_i
-      next unless input.positive? && input <= 9
-
-      case input
-      when 1
-        @books.list_books
-      when 5
-        @label.list_labels
-      when 7
-        @books.add_book
+      if input.positive? && input <= 9
+        case input
+        when 1
+          @books.list_books
+        when 5
+          @label.list_labels
+        when 7
+          @books.add_book
+        else
+          send(options.values[input - 1])
+        end
       else
-        send(options.values[input - 1])
-        puts "\nThank you for using this app\n\n"
         save_music
+        save_data(@games, @authors)
+        puts "\nThank you for using this app\n\n"
         break
       end
     end

@@ -1,6 +1,7 @@
 -- Delete tables if already exist
 DROP TABLE IF EXISTS MusicAlbum;
 DROP TABLE IF EXISTS Genre;
+DROP TABLE IF EXISTS Games
 
 -- Genre table
 CREATE TABLE Genre (
@@ -40,4 +41,24 @@ CREATE TABLE BOOK (
  LABEL_ID INT,
  CONSTRAINT fk_label FOREIGN KEY (LABEL_ID) REFERENCES label (ID),
  PRIMARY KEY (ID)
+);
+
+-- CREATE TABLE GAMES
+CREATE TABLE Games (
+  id int NOT NULL GENERATED ALWAYS AS IDENTITY,
+  multiplayer boolean,
+  last_played_at date,
+  author_id int,
+  publish_date date,
+  archived boolean,
+  PRIMARY KEY(id)
+);
+
+-- CREATE TABLE AUTHOR
+DROP TABLE IF EXISTS author;
+CREATE TABLE Author (
+  id int NOT NULL GENERATED ALWAYS AS IDENTITY,
+  first_name varchar(100),
+  last_name varchar(100),
+  PRIMARY KEY(id)
 );
