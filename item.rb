@@ -1,14 +1,10 @@
 class Item
-  attr_accessor :genre, :author, :source, :label, :publish_date
+  attr_accessor :genre, :author, :source, :label, :publish_date, :self
 
   def intitalize(_id, publish_date, archived)
     @id = Random.rand(1..10_000)
     @publish_date = publish_date
     @archived = archived
-    @genre = []
-    @author = []
-    @source = []
-    @label = []
   end
 
   def add_genre(genre)
@@ -16,7 +12,7 @@ class Item
   end
 
   def add_author(author)
-    @author << author
+    @author = author
   end
 
   def add_source(source)
