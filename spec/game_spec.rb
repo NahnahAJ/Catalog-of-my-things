@@ -16,4 +16,8 @@ describe Game do
   it 'last played mode is set correctly' do
     expect(@new_game.last_played_at).to eql(Time.new(2015))
   end
+
+  it 'can be archived?' do
+    expect(@new_game.can_be_archived?).to eql(false)
+  end
 end

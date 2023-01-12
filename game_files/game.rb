@@ -12,7 +12,7 @@ class Game < Item
   end
 
   def can_be_archived?
-    super && (Time.now.year - @last_played_at).to_i > 2
+    super && Time.now.year - 2 > @last_played_at
   end
 
   def to_json(*args)
