@@ -1,0 +1,64 @@
+-- Delete tables if already exist
+DROP TABLE IF EXISTS MusicAlbum;
+DROP TABLE IF EXISTS Genre;
+DROP TABLE IF EXISTS Games
+
+-- Genre table
+CREATE TABLE Genre (
+  id INT GENERATED ALWAYS AS IDENTITY,
+  name varchar(100),
+  PRIMARY KEY(id)
+);
+
+-- MusicAlbum table
+CREATE TABLE MusicAlbum (
+  id INT GENERATED ALWAYS AS IDENTITY,
+  name varchar(100),
+  publish_date DATE,
+  archived BOOLEAN,
+  on_spotify BOOLEAN,
+  genre_id INT REFERENCES Genre(id),
+  PRIMARY KEY(id)
+);
+
+-- CREATE TABLE LABEL
+DROP TABLE IF EXISTS LABEL;
+CREATE TABLE LABEL (
+ ID INT NOT NULL GENERATED ALWAYS AS IDENTITY,
+ TITLE VARCHAR(80),
+ COLOR VARCHAR(80),
+ PRIMARY KEY (ID)
+);
+
+-- CREATE TABLE BOOKS
+DROP TABLE IF EXISTS BOOK;
+CREATE TABLE BOOK (
+ ID INT NOT NULL GENERATED ALWAYS AS IDENTITY,
+ PUBLISHER VARCHAR(80),
+ COVER_STATE VARCHAR(80),
+ ARCHIVED BOOLEAN,
+ PUBLISH_DATE DATE,
+ LABEL_ID INT,
+ CONSTRAINT fk_label FOREIGN KEY (LABEL_ID) REFERENCES label (ID),
+ PRIMARY KEY (ID)
+);
+
+-- CREATE TABLE GAMES
+CREATE TABLE Games (
+  id int NOT NULL GENERATED ALWAYS AS IDENTITY,
+  multiplayer boolean,
+  last_played_at date,
+  author_id int,
+  publish_date date,
+  archived boolean,
+  PRIMARY KEY(id)
+);
+
+-- CREATE TABLE AUTHOR
+DROP TABLE IF EXISTS author;
+CREATE TABLE Author (
+  id int NOT NULL GENERATED ALWAYS AS IDENTITY,
+  first_name varchar(100),
+  last_name varchar(100),
+  PRIMARY KEY(id)
+);
