@@ -40,7 +40,7 @@ module MusicHandler
     inputs << gets.chomp
     print('Genre type: ')
     inputs << gets.chomp
-    print('Published year [1900-01-30]: ')
+    print('Published year [YYYY-MM-DD]: ')
     inputs << gets.chomp
     print('On spotify [y/n]: ')
     inputs << gets.chomp
